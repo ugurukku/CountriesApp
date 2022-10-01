@@ -5,6 +5,7 @@ import com.worldApp.entity.Country;
 import com.worldApp.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.net.HttpURLConnection;
@@ -13,10 +14,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-@Repository(value = "countryRepo")
+@Repository(value = "connectionAPI")
 public class APIConnectionImpl implements APIConnectionInter {
 
-    public List<Country> getCountries() {
+    public String getInformationString() {
         try {
             URL url = new URL("https://raw.githubusercontent.com/natiqhaciyef/Country-JSON/main/Country%20API%20kit/Country%20API.json");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -36,15 +37,11 @@ public class APIConnectionImpl implements APIConnectionInter {
             }
             scanner.close();
 
-            JsonMapper mapper = new JsonMapper();
-           List<Country> countries = Arrays
-                   .asList(mapper.readValue(informationString.toString(), Country[].class));
-
-           return countries;
+            return informationString.toString();
 
         } catch (Exception e) {
-           e.printStackTrace();
-           return null;
+            e.printStackTrace();
+            return null;
         }
     }
 }
