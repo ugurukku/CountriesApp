@@ -11,15 +11,15 @@ import java.util.List;
 @Service
 public class CountryService {
 
-    private final APIConnectionInter apiConnectionInter;
+    private final CountriesDaoInter countriesDAO;
 
     @Autowired
-    public CountryService(@Qualifier("countryRepo") APIConnectionInter apiConnectionInter) {
-        this.apiConnectionInter = apiConnectionInter;
+    public CountryService(@Qualifier("countriesDaoImpl") CountriesDaoInter countriesDAO) {
+        this.countriesDAO = countriesDAO;
     }
 
     public List<Country> getCountries(){
-        return apiConnectionInter.getCountries();
+        return countriesDAO.getCountries();
     }
 
 }
