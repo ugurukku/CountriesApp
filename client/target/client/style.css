@@ -1,0 +1,31 @@
+body{
+    align-items: center;
+    text-align: center;
+    background: black;
+}
+
+.countries{
+    align-items: center;
+    text-align: center;
+}
+
+
+.country {
+   background: #efef84;
+    height: 300px;
+    width: 300px;
+    margin-bottom: 15px;
+    margin-left: 15px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.country img {
+    width: 200px;
+    height: 200px;
+    object-fit: scale-down;
+}
+
+h2{
+    margin-top: 5px;
+}
